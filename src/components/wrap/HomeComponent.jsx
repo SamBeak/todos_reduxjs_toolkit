@@ -21,6 +21,11 @@ export default function HomeComponent() {
         todoDispatch(add(todo));
     };
 
+    // todo remove 이벤트
+    const onClickRemove = (e) => {
+        todoDispatch(remove(e.target.parentNode.id));
+    };
+
   return (
     <div id="home">
         <div className="container">
@@ -35,9 +40,9 @@ export default function HomeComponent() {
                         {
                             todos.map((item, idx) => {
                                 return(
-                                    <li key={idx}>
+                                    <li key={idx} id={item.id}>
                                         <span>{item.text}</span>
-                                        <button type='button'>REMOVE</button>
+                                        <button type='button' onClick={onClickRemove}>REMOVE</button>
                                     </li>
                                 )
                             })
