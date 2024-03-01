@@ -1,8 +1,14 @@
 import React from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { add, remove } from "../../store";
 
 export default function HomeComponent() {
 
     const [ todo, setTodo ] = React.useState("");
+    
+    // redux 상태 불러오기
+    const todos = useSelector(state => state);
+    const todoDispatch = useDispatch();
     
     // todo 입력 이벤트
     const onChangeTodo = (e) => {
