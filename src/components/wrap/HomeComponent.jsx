@@ -18,6 +18,7 @@ export default function HomeComponent() {
     // todo submit 이벤트
     const onSubmitTodo = (e) => {
         e.preventDefault();
+        todoDispatch(add(todo));
     };
 
   return (
@@ -30,7 +31,18 @@ export default function HomeComponent() {
                         <input type="text" id='userTodo' name='userTodo' autoComplete='off' onChange={onChangeTodo} />
                         <button type="submit">ADD</button>
                     </form>
-                    <ul className="todo__list"></ul>
+                    <ul className="todo__list">
+                        {
+                            todos.map((item, idx) => {
+                                return(
+                                    <li key={idx}>
+                                        <span>{item.text}</span>
+                                        <button type='button'>REMOVE</button>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
